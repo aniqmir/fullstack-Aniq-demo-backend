@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    // Environment
+    "target": "ES2020",              // Modern JS output
+    "module": "commonjs",            // Works with Node.js
+    "moduleResolution": "node",      // Resolves modules like Node
+    "esModuleInterop": true,         // Allows import from CommonJS modules
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,                  // Enable all strict checks
+    "skipLibCheck": true,            // Skip type check of node_modules
+    "isolatedModules": true,         // Safe for ts-node
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    // "noUncheckedSideEffects": true,
+
+    // Project Layout
+    "rootDir": "src",                // Source folder
+    "outDir": "dist",                // Compiled JS output
+    "declaration": true,             // Generate type declarations
+    "declarationMap": true,          // Map declarations to TS files
+    "sourceMap": true,               // Generate source maps
+
+    // JSX (frontend compatibility if needed)
+    "jsx": "react-jsx",
+
+    // Module detection
+    "moduleDetection": "force"
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}
