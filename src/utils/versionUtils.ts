@@ -1,12 +1,31 @@
-export function isVersionSupported(clientVersion: string, minVersion: string): boolean {
-    const parse = (v: string) => v.split('.').map(Number);
-    const [cMajor, cMinor, cPatch] = parse(clientVersion);
-    const [mMajor, mMinor, mPatch] = parse(minVersion);
+export function isVersionSupported(
+  currentVersion: string,
+  minVersion: string
+): boolean {
+  const parse = (version: string): [number, number, number] => {
+    const parts = version.split('.').map(Number);
 
-    if (cMajor > mMajor) return true;
-    if (cMajor < mMajor) return false;
-    if (cMinor > mMinor) return true;
-    if (cMinor < mMinor) return false;
-    if (cPatch >= mPatch) return true;
-    return false;
+    if (
+      parts.length !== 3 ||
+      parts[0] === undefined ||
+      parts[1] === undefined ||
+      parts[2] === undefined ||
+      Number.isNaN(parts[0]) ||
+      Number.isNaN(parts[1]) ||
+      Number.isNaN(parts[2])
+    ) {
+      throw new Error(`Invalid version format: ${version}`);
+    }
+
+    // ✅ Explicit tuple construction (this is the key)
+    return [parts[0], parts[1], parts[2]];
+  };
+
+  const [cMajor, cMinor, cPatch] = parse(currentVersion);
+  const [mMajor, mMinor, mPatch] = parse(minVersion);
+
+  if (cMajor !== mMajor) return cMajor > mMajor;
+  if (cMinor !== mMinor) return cMinor > mMinor;
+
+  return cPatch >= mPatch;
 }

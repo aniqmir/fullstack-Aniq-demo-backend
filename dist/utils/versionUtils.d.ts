@@ -1,2 +1,2 @@
-export declare function isVersionSupported(clientVersion: string, minVersion: string): boolean;
+export declare function isVersionSupported(currentVersion: string, minVersion: string): boolean;
 //# sourceMappingURL=versionUtils.d.ts.map
