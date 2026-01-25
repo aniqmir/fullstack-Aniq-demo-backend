@@ -14,8 +14,8 @@
     // "noUncheckedSideEffects": true,
 
     // Project Layout
-    "rootDir": "src",                // Source folder
-    "outDir": "dist",                // Compiled JS output
+    "rootDir": "./src",                // Source folder
+    "outDir": "./dist",                // Compiled JS output
     "declaration": true,             // Generate type declarations
     "declarationMap": true,          // Map declarations to TS files
     "sourceMap": true,               // Generate source maps
