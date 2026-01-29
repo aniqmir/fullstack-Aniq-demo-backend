@@ -1,8 +1,17 @@
 import { Router } from 'express';
+import { getUsers } from '../controllers/userController';
 import { authenticate } from '../middleware/authenticate';
 import { requireRole } from '../middleware/requireRole';
 
 const router = Router();
+
+
+router.get(
+  "/users",
+  authenticate,
+  requireRole(['ADMIN']),
+  getUsers
+);
 
 router.get(
   '/admin/metrics',
